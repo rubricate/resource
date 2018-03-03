@@ -10,15 +10,12 @@
 
 
 
-
 namespace Rubricate\Config;
 
 
 class FileLocatorConfig implements IFileLocatorConfig
 {
-
     private $path;
-
 
 
 
@@ -26,8 +23,6 @@ class FileLocatorConfig implements IFileLocatorConfig
     {
         self::setPath($path);
     }
-
-
 
 
 
@@ -39,7 +34,6 @@ class FileLocatorConfig implements IFileLocatorConfig
 
 
 
-
     public function includeFile($filename)
     {
         $config = self::fileConfig($filename);
@@ -48,25 +42,19 @@ class FileLocatorConfig implements IFileLocatorConfig
 
 
 
-
     private function fileConfig($filename)
     {
-        return $this->path 
-            . $filename . '.php';
+        return $this->path . $filename . '.php';
     } 
-
 
 
 
     private function setPath($path)
     {
-        $this->path = rtrim($path, '\\/') 
-            . DIRECTORY_SEPARATOR;
+        $this->path = rtrim($path, '\\/') . DIRECTORY_SEPARATOR;
 
         return $this;
     } 
-
-
 
 
 

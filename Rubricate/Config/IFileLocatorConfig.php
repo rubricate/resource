@@ -21,4 +21,3 @@ interface IFileLocatorConfig
     public function includeFile($name);
 }
 
-
