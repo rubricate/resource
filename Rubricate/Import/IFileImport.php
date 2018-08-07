@@ -4,20 +4,18 @@
  * @package     Rubricate
  * @author      Estefanio NS <estefanions AT gmail DOT com>
  * @link        https://github.com/rubricate
- * @copyright   2017 
+ * @copyright   2017 - 2018
  * 
  */
  
 
 
 
-namespace Rubricate\Config; 
+namespace Rubricate\Import; 
 
 
-interface IFileLocatorConfig
+interface IFileImport
 {
-    public function getFile($name);
-
-    public function includeFile($name);
+    public function import($filename);
 }
 

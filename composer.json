@@ -1,5 +1,5 @@
 {
-    "name": "rubricate/config",
+    "name": "rubricate/import",
     "authors": [
         {
             "name": "Estefanio NS",
@@ -8,7 +8,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Rubricate\\Config\\": "Rubricate/Config/"
+            "Rubricate\\Import\\": "Rubricate/Import/"
         }
     }
 }
