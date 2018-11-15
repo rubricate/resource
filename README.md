@@ -1,8 +1,8 @@
-# RubricatePHP Import
+# RubricatePHP Resource
 
 component to include files
 
 ```
-$ composer require rubricate/import
+$ composer require rubricate/resource
 ```
 

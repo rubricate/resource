@@ -1,14 +1,14 @@
 {
-    "name": "rubricate/import",
+    "name": "rubricate/resource",
     "authors": [
         {
-            "name": "Estefanio NS",
+            "name":  "Estefanio NS",
             "email": "estefanions@gmail.com"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Rubricate\\Import\\": "Rubricate/Import/"
+            "Rubricate\\Resource\\": "Rubricate/Resource/"
         }
     }
 }
