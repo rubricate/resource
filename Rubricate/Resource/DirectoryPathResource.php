@@ -32,13 +32,20 @@ class DirectoryPathResource implements IDirectoryPathResource
 
 
 
-    private function init($dirPath)
+    private function init($dir)
     {
-        $dirPath = (!empty($dirPath))? $dirPath: '.';
+        $dir     = (!empty($dir))? $dir: '.';
+        $dirPath = rtrim($dir, '\\/') . DIRECTORY_SEPARATOR;
 
-        $this->dirPath = '' 
-            . rtrim($dirPath, '\\/') 
-            . DIRECTORY_SEPARATOR;
+
+        if(!is_dir($dirPath)){
+            throw new \Exception(sprintf(
+                 "Directory Not Found.\npath:'%s'\n", $dirPath
+            ));
+        }
+
+
+        $this->dirPath = $dirPath;
 
         return $this;
 
