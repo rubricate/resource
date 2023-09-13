@@ -1,5 +1,7 @@
 <?php 
 
+declare(strict_types=1);
+
 namespace Rubricate\Resource;
 
 class DirectoryPathResource implements IDirectoryPathResource
@@ -11,12 +13,12 @@ class DirectoryPathResource implements IDirectoryPathResource
         self::init($dirPath);
     }
 
-    public function getDirectoryPath()
+    public function getDirectoryPath(): ?string
     {
         return $this->dirPath;
     } 
 
-    private function init($dir)
+    private function init($dir): void
     {
         $dir     = (!empty($dir))? $dir: '.';
         $dirPath = rtrim($dir, '\\/') . DIRECTORY_SEPARATOR;

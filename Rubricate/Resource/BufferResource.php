@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rubricate\Resource;
 
 class BufferResource implements IIncorporateResource
@@ -11,7 +13,7 @@ class BufferResource implements IIncorporateResource
         $this->ob = $ob;
     }
 
-    public function incorporate($filename, $data = array())
+    public function incorporate($filename, $data = array()): string
     {
         ob_start();
 

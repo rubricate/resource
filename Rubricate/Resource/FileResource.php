@@ -1,5 +1,7 @@
 <?php 
 
+declare(strict_types=1);
+
 namespace Rubricate\Resource;
 
 class FileResource implements IFileResource
@@ -12,7 +14,7 @@ class FileResource implements IFileResource
 
     }
 
-    public function get($filename)
+    public function get($filename): string
     {
         $absolutePath = $this->dirPath . $filename . '.php';
 
@@ -25,7 +27,7 @@ class FileResource implements IFileResource
         return include $absolutePath;
     } 
 
-    public function incorporate($filename, $data = array())
+    public function incorporate($filename, $data = array()): void
     {
         $absolutePath = $this->dirPath . $filename . '.php';
 
