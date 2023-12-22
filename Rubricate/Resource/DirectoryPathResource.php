@@ -31,8 +31,6 @@ class DirectoryPathResource implements IDirectoryPathResource
 
         $this->dirPath = $dirPath;
 
-        return $this;
-
     } 
 
 }
