@@ -4,6 +4,6 @@ namespace Rubricate\Resource;
 
 interface IDirectoryPathResource
 {
-    public function getDirectoryPath();
+    public function getDirectoryPath(): ?string;
 }
 

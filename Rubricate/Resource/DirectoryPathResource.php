@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Rubricate\Resource;
 
+use InvalidArgumentException;
+
 class DirectoryPathResource implements IDirectoryPathResource
 {
-    private $dirPath;
+    private ?string $dirPath;
 
     public function __construct($dirPath = null)
     {
@@ -20,13 +22,12 @@ class DirectoryPathResource implements IDirectoryPathResource
 
     private function init($dir): void
     {
-        $dir     = (!empty($dir))? $dir: '.';
-        $dirPath = rtrim($dir, '\\/') . DIRECTORY_SEPARATOR;
+        $dirPath = rtrim($dir ?? '.', '\\/') . DIRECTORY_SEPARATOR;
 
         if(!is_dir($dirPath)){
-            throw new \Exception(sprintf(
-                 "Directory Not Found.\npath:'%s'\n", $dirPath
-            ));
+            throw new InvalidArgumentException(
+                sprintf( "Directory Not Found. Path:'%s'", $dirPath)
+            );
         }
 
         $this->dirPath = $dirPath;

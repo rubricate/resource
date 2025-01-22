@@ -4,6 +4,6 @@ namespace Rubricate\Resource;
 
 interface IIncorporateResource
 {
-    public function incorporate($filename, $data);
+    public function incorporate(string $filename, array $data = []): ?string;
 }    
 

@@ -4,6 +4,6 @@ namespace Rubricate\Resource;
 
 interface IGetResource
 {
-    public function get($filename);
+    public function get(string $filename): string;
 }    
 

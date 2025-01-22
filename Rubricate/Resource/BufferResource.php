@@ -6,14 +6,14 @@ namespace Rubricate\Resource;
 
 class BufferResource implements IIncorporateResource
 {
-    private $ob;
+    private IIncorporateResource $ob;
     
     public function __construct(IIncorporateResource $ob)
     {
         $this->ob = $ob;
     }
 
-    public function incorporate($filename, $data = array()): string
+    public function incorporate(string $filename, array $data = []): ?string
     {
         ob_start();
 
@@ -22,7 +22,7 @@ class BufferResource implements IIncorporateResource
 
         ob_end_clean();
 
-        return $resource;
+        return $resource ?? '';
     } 
 
 }

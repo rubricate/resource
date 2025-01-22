@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Rubricate\Resource;
 
+use InvalidArgumentException;
+
 class FileResource implements IFileResource
 {
-    private $dirPath;
+    private string $dirPath;
 
     public function __construct(IDirectoryPathResource $i)
     {
@@ -14,35 +16,36 @@ class FileResource implements IFileResource
 
     }
 
-    public function get($filename): string
+    public function get(string $filename): string
     {
         $absolutePath = $this->dirPath . $filename . '.php';
 
-        if(!file_exists($absolutePath)){
-            throw new \Exception(
-                sprintf("file not found. '%s.php'\n", $filename)
-            );
-        }
+        self::exceptionFile($absolutePath, $filename);
 
-        return include $absolutePath;
+        return (string) include $absolutePath;
     } 
 
-    public function incorporate($filename, $data = array()): void
+    public function incorporate($filename, $data = array()): ?string
     {
         $absolutePath = $this->dirPath . $filename . '.php';
 
+        self::exceptionFile($absolutePath, $filename);
+
+        if (!empty($data)) {
+            extract($data, EXTR_SKIP);
+        }
+
+       return (string) include $absolutePath;
+    } 
+
+    private function exceptionFile(string $absolutePath, string $filename)
+    {
         if(!file_exists($absolutePath)){
-            throw new \Exception(
-                sprintf("file not found. '%s.php'\n", $filename)
+            throw new InvalidArgumentException(
+                sprintf("file not found. '%s.php'", $filename)
             );
         }
-
-        if(is_array($data) && count($data)) {
-            extract($data);
-        }
-
-        include $absolutePath;
-    } 
+    }
 
 }
 
